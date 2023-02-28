@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+from steam import Steam
+
+load_dotenv(dotenv_path='.env.steam')
+steam = Steam(os.getenv('STEAM_API_KEY'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2zb*6-e_)*@ujepa@b(9!#lc&^&u1y_k^r8=_q5xuzq$_ut0$&'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # ABSOLUTE_URL for redirection after login (default is localhost)
-ABSOLUTE_URL='127.0.0.1:8000' # or 'yourowndomain.com'
+ABSOLUTE_URL = os.getenv('ABSOLUTE_URL')
 AUTH_USER_MODEL = "account.SteamUser"
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -82,9 +87,13 @@ WSGI_APPLICATION = 'steamauthentication.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'postgresql',
+       'USER': 'postgres',
+       'PASSWORD': 'postgres',
+       'HOST': ABSOLUTE_URL,
+       'PORT': 5000,
+   }
 }
 
 
