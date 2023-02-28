@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Steam OpenId Test</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <p>Hi, {% if user.get_short_name %}{{ user.get_short_name }}{% else %}{{ user.steamid }}{% endif %}. Thanks for logging in</p>
+        <a href='/account/signout'>Signout</a>
+    {% else %}
+        <a href='/account/signin'>Welcome, please log in with Steam</a>
+    {% endif %}
+</body>
+</html>
