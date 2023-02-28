@@ -1,0 +1,3 @@
+# environment varibles
+.env.*
+.DS_Store
