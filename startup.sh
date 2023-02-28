@@ -1,6 +1,7 @@
 # packages update/install
 python3 -m pip install --upgrade pip
 pip install virtualenv
+
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
@@ -11,7 +12,7 @@ cd steamauthentication
 # ask for new super user creation
 echo 'Do you want to create a new superuser? [y/n]'
 read superuser
-if [ $superuser = 'y']
+if [ $superuser = 'y' ]
 then
    python3 manage.py createsuperuser
 fi

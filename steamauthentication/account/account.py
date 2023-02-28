@@ -1,13 +1,10 @@
-from os import getenv
 from django.utils import timezone
-from dotenv import load_dotenv
-from steam import Steam
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.conf import settings
 
+steam = getattr(settings, 'steam', None)
 User = get_user_model()
-load_dotenv(dotenv_path='.env.steam')
-steam = Steam(getenv('STEAM_API_KEY'))
 
 def process(steamid):
     if steamid is None:
