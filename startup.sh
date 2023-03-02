@@ -7,7 +7,7 @@ source env/bin/activate
 pip install -r requirements.txt
 
 # switch folder
-cd steamauthentication
+cd django-app
 
 # ask for new super user creation
 echo 'Do you want to create a new superuser? [y/n]'
