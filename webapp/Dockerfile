@@ -1,6 +1,6 @@
 # CLI commands:
-# - docker build . -t django-webapp-sqlite
-# - docker run --name django-sqlite --env-file .env -p 8000:8000 -d django-webapp-sqlite
+# - docker build . -t django-ssl-sqlite
+# - docker run --name django-sqlite --env-file .env -p 8000:8000 -d django-ssl-sqlite
 
 # base image
 FROM python
