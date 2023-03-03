@@ -22,8 +22,10 @@ services: # the different images that will be running as containers
 
   web: # service name
 # CLI command:
-# - docker build . -t django-steam-signin
-# - docker run --name some-django -p 0.0.0.0:{APP_PORT}:8000 -d django-steam-signin
+# - docker build . -t django-ssl-sqlite
+# - docker run --name django-ssl-sqlite --env-file .env -p 8000:8000 -d django-ssl-sqlite
+# - docker build . -t django-ssl-postgres
+# - docker run --name django-ssl-postgres --env-file .env -p 8000:8000 -d django-ssl-postgres
     container_name: django-app
 #build the image for the web service from the dockerfile in parent directory.  
     build:
