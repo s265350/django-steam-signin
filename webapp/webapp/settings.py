@@ -32,7 +32,8 @@ ABSOLUTE_URL = os.getenv('ABSOLUTE_URL')+':'+os.getenv('APP_PORT')
 AUTH_USER_MODEL = "account.SteamUser"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = bool(os.getenv('DEBUG'))
+USE_SSL = bool(os.getenv('USE_SSL'))
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'home',
     'account',
 ]
@@ -86,6 +88,10 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'replica': {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': os.getenv('DB_NAME'),
        'USER': os.getenv('POSTGRES_USER'),
@@ -93,10 +99,6 @@ DATABASES = {
        'HOST': os.getenv('DB_HOST'),
        'PORT': os.getenv('DB_PORT'),
    },
-    'replica': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
 }
 
 

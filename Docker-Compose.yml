@@ -21,7 +21,7 @@ services: # the different images that will be running as containers
     # - web
 
   web: # service name
-# CLI command: 
+# CLI command:
 # - docker build . -t django-steam-signin
 # - docker run --name some-django -p 0.0.0.0:{APP_PORT}:8000 -d django-steam-signin
     container_name: django-app
@@ -53,8 +53,7 @@ services: # the different images that will be running as containers
 
   db: # service name
 # CLI commands:
-# - docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres
-# - docker run --name some-postgres -p ${APP_PORT}:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+# - docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 # image name of the postgres database. during build, this will be pulled from dockerhub and a container spun up from it.
     image: postgres
     container_name: postgres

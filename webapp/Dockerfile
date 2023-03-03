@@ -1,5 +1,9 @@
+# CLI commands:
+# - docker build . -t django-webapp-sqlite
+# - docker run --name django-sqlite --env-file .env -p 8000:8000 -d django-webapp-sqlite
+
 # base image
-FROM python:3.8
+FROM python
 
 # setup working directory
 ENV DockerHOME=/home/app/webapp
@@ -29,8 +33,9 @@ EXPOSE 8000
 #ENTRYPOINT [ "./startup.sh" ]
 
 # make migrations
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+#RUN python3 manage.py makemigrations
+#RUN python3 manage.py migrate
 
 # run the server
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD python3 manage.py makemigrations; python3 manage.py migrate; python manage.py runserver_plus --cert-file cert.pem --key-file key.pem 0.0.0.0:${APP_PORT}
