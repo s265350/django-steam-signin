@@ -29,3 +29,15 @@ Run it in detach mode if you have the docker application:
 ### 4. Browser
 
 Open your browser and go to: https://0.0.0.0/8000
+
+## Run without docker
+
+If you want to connect to connect to your postgres database youhave to run django without docker
+
+### 1. PostgreSQL
+
+First, let's start a postgres db in docker (because it is simpler to setup).
+
+Just run:
+`docker run --name some-postgres -p 5432:5432 -e POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres -d postgres`
+You can change port user and password if you wish, but remember to change them also in the env file
