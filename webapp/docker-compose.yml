@@ -1,0 +1,23 @@
+# CLI commands:
+# - docker-compose --env-file=.env config
+# - docker-compose --env-file=.env up
+# - docker compose down
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+  web:
+    build: .
+    command: python manage.py runserver ${ABSOLUTE_URL}:${APP_PORT}
+    volumes:
+      - .:/code
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    env_file:
+      - .env
+    depends_on:
+      - db

@@ -1,10 +1,12 @@
-# django-steam-signin
+# Steam signin system with Django
 
 ## How to run
 
 ### 1. Environment variables
 
 You'll need to change name to the "template.env" file from "template.env" to ".env" and fill all the empty fields.
+You'll have to deal also with the ABSOLUTE_URL field:
+Depending on the configuration it has to be 0.0.0.0 (within docker) or localhost (without docker)
 
 ### 2. Create a SSL certificate
 
@@ -40,7 +42,7 @@ If you want to connect to connect to your postgres database youhave to run djang
 
 ### Environment variables and SSL
 
-It's not necessary to have a certifcate if you don't run the website in docker but it's not bad the have a bit more security on the internet. (follow the above steps)
+It's not necessary to have a certifcate if you don't run the website in docker but it's not bad the have a bit more security on the internet. (follow the above 1. and 2. steps)
 
 ### 2. PostgreSQL
 
@@ -63,12 +65,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'replica': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': os.getenv('DB_NAME'),
-       'USER': os.getenv('POSTGRES_USER'),
-       'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-       'HOST': os.getenv('DB_HOST'),
-       'PORT': os.getenv('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
    },
 }
 
@@ -76,13 +78,13 @@ to:
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': os.getenv('DB_NAME'),
-       'USER': os.getenv('POSTGRES_USER'),
-       'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-       'HOST': os.getenv('DB_HOST'),
-       'PORT': os.getenv('DB_PORT'),
-    },
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+   },
     'replica': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),

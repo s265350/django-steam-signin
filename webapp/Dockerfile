@@ -28,14 +28,5 @@ RUN pip install -r requirements.txt
 # port where the Django app runs
 EXPOSE 8000
 
-# run start file
-#RUN ["chmod", "+x", "./startup.sh"]
-#ENTRYPOINT [ "./startup.sh" ]
-
-# make migrations
-#RUN python3 manage.py makemigrations
-#RUN python3 manage.py migrate
-
-# run the server
-#CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+# make migrations and run the server
 CMD python3 manage.py makemigrations; python3 manage.py migrate; python manage.py runserver_plus --cert-file cert.pem --key-file key.pem 0.0.0.0:${APP_PORT}
