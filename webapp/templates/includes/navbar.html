@@ -1,0 +1,96 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top justify-content-between bg-body-tertiary px-5">
+    <!-- Brand & collapse button -->
+    <div>
+        <a class="navbar-brand text-capitalize fs-2 fw-bold" href="#">soft skills games</a>
+    </div>
+    {% if user.is_authenticated %}
+    <div>
+        <!-- language -->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-light text-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-translate h4"></i></button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="english">
+                        <figcaption class="figure-caption h6 px-3 my-0">English</figcaption>
+                    </figure>
+                </a></li>
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/197/197593.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="espanol">
+                        <figcaption class="figure-caption h6 px-3 my-0">Espanol</figcaption>
+                    </figure>
+                </a></li>
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/323/323325.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="italiano">
+                        <figcaption class="figure-caption h6 px-3 my-0">Italiano</figcaption>
+                    </figure>
+                </a></li>
+            </ul>
+        </div>
+        <!-- notifications -->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-light text-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-bell h4"></i></button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <i class="bi bi-emoji-sunglasses h4"></i>
+                        <figcaption class="figure-caption h6 px-3 my-0">Good work</figcaption>
+                    </figure>
+                </a></li>
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <i class="bi bi-emoji-heart-eyes h4"></i>
+                        <figcaption class="figure-caption h6 px-3 my-0">Get started</figcaption>
+                    </figure>
+                </a></li>
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <i class="bi bi-emoji-laughing h4"></i>
+                        <figcaption class="figure-caption h6 px-3 my-0">Welcome</figcaption>
+                    </figure>                        
+                </a></li>
+            </ul>
+        </div>
+        <!-- profile -->
+        <div class="btn-group" role="group">
+            <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                <img src={{ user.avatar }} class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="avatar">
+                <figcaption class="figure-caption h6 px-3 my-0">
+                    {% if user.get_short_name %}{{ user.get_short_name }}{% else %}{{ user.steamid }}{% endif %}<br>
+                    <small class="text-muted fw-lighter my-0">{% if user.role %}{{ user.role }}{% else %}No role set{% endif %}</small>
+                </figcaption>
+            </figure>
+            <ul class="dropdown-menu mt-1">
+                <li><a class="dropdown-item" href="#">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <img src="https://cdn4.iconfinder.com/data/icons/music-ui-solid-24px/24/settings-3-1024.png" class="figure-img img-responsive rounded my-0" style="width: 2rem;" alt="account">
+                        <figcaption class="figure-caption h6 px-3 my-0">Your account</figcaption>
+                    </figure>
+                </a></li>
+                <li><a class="dropdown-item" href="/account/signout">
+                    <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
+                        <button type="button" class="btn btn-outline-light text-dark"><i class="bi bi-box-arrow-in-right h4"></i></button>
+                        <i class="bi bi-box-arrow-right h4"></i>
+                        <figcaption class="figure-caption h6 px-3 my-0">Logout</figcaption>
+                    </figure>
+                </a></li>
+            </ul>
+        </div>      
+    </div>
+    {% else %}
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active text-capitalize" aria-current="page" href="#someid">home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-capitalize" href="#someid">how it works</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/account/signin">register</a>
+        </li>
+    </ul>
+    {% endif %}
+</nav>

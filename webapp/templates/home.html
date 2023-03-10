@@ -7,96 +7,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
+    <!-- removes dropdowns arrow -->
     <style>
-        .dropdown-toggle::after {
-            content: none; <!-- removes dropdown arrows -->
-        }
+      .dropdown-toggle::after{
+        content: none; 
+      }
     </style>
   </head>
   <body>
+    <!-- Navbar -->
+    {% include 'includes/navbar.html' with user=user %}
+
+    <!-- content -->
     {% if user.is_authenticated %}
-    <nav class="navbar navbar-expand-lg fixed-top justify-content-between bg-body-tertiary px-5">
-        <!-- Brand & collapse button -->
-        <div>
-            <a class="navbar-brand text-capitalize fs-2 fw-bold" href="#">soft skills games</a>
-        </div>
-        <div>
-            <!-- language -->
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-light text-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-translate h4"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="english">
-                            <figcaption class="figure-caption h6 px-3 my-0">English</figcaption>
-                        </figure>
-                    </a></li>
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/197/197593.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="espanol">
-                            <figcaption class="figure-caption h6 px-3 my-0">Espanol</figcaption>
-                        </figure>
-                    </a></li>
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/323/323325.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="italiano">
-                            <figcaption class="figure-caption h6 px-3 my-0">Italiano</figcaption>
-                        </figure>
-                    </a></li>
-                </ul>
-            </div>
-            <!-- notifications -->
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-light text-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-bell h4"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn0.iconfinder.com/data/icons/remoji-soft-1/512/emoji-party-hat-confetti.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="italiano">
-                            <figcaption class="figure-caption h6 px-3 my-0">Good work</figcaption>
-                        </figure>
-                    </a></li>
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn0.iconfinder.com/data/icons/remoji-soft-1/512/emoji-cool-thinking.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="italiano">
-                            <figcaption class="figure-caption h6 px-3 my-0">Get started</figcaption>
-                        </figure>
-                    </a></li>
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn0.iconfinder.com/data/icons/remoji-soft-1/512/emoji-wink-hello-smile-happy.png" class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="italiano">
-                            <figcaption class="figure-caption h6 px-3 my-0">Welcome</figcaption>
-                        </figure>                        
-                    </a></li>
-                </ul>
-            </div>
-            <!-- profile -->
-            <div class="btn-group" role="group">
-                <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                    <img src={% user.avatar %} class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="avatar">
-                    <figcaption class="figure-caption h6 px-3 my-0">
-                        {% if user.get_short_name %}{{ user.get_short_name }}{% else %}{{ user.steamid }}{% endif %}<br>
-                        <small class="text-muted fw-lighter my-0">{% if user.role %}{{ user.role }}{% else %}No role set{% endif %}</small>
-                    </figcaption>
-                </figure>
-                <ul class="dropdown-menu mt-1">
-                    <li><a class="dropdown-item" href="#">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn4.iconfinder.com/data/icons/music-ui-solid-24px/24/settings-3-1024.png" class="figure-img img-responsive rounded my-0" style="width: 2rem;" alt="account">
-                            <figcaption class="figure-caption h6 px-3 my-0">Your account</figcaption>
-                        </figure>
-                    </a></li>
-                    <li><a class="dropdown-item" href="/account/signout">
-                        <figure type="button" class="figure dropdown-toggle mt-0 mb-1 px-2" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;align-items: center;">
-                            <img src="https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_entrance_exit_log_out_arrow-1024.png" class="figure-img img-responsive rounded my-0" style="width: 2rem;" alt="logout">
-                            <figcaption class="figure-caption h6 px-3 my-0">Logout</figcaption>
-                        </figure>
-                    </a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      {% include 'includes/home.html' %}
     {% else %}
-    <a class="dropdown-item" href="/account/signin">Login</a>
+      {% include 'includes/landing.html' %}
     {% endif %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

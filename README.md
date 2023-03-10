@@ -14,7 +14,7 @@ This instance works only if with an SSL certifcate
 You can create one following this tutorial: https://timonweb.com/django/https-django-development-server-ssl-certificate/
 Put both cert and key files inside the "django-steam-signin/webapp" folder.
 
-### 3. It' better to run in a Docker container
+### 3. It's better to run in a Docker container
 
 Download the CLI tool or the Docker application from their website: https://www.docker.com
 
