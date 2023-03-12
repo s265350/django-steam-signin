@@ -38,7 +38,7 @@ Open your browser and go to: https://0.0.0.0/8000
 
 ## Run without docker
 
-If you want to connect to connect to your postgres database youhave to run django without docker
+If you want to connect to connect to your postgres database you have to run django without docker
 
 ### Environment variables and SSL
 

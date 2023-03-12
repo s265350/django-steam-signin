@@ -1,5 +1,10 @@
 # environment variables
+env/
 .env
 .DS_Store
-env/
 .pem
+webapp/db.sqlite3
+webapp/webapp/__pycache__/wsgi.cpython-311.pyc
+webapp/webapp/__pycache__/settings.cpython-311.pyc
+webapp/home/__pycache__/views.cpython-311.pyc
+webapp/account/__pycache__/views.cpython-311.pyc
