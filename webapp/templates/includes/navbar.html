@@ -1,11 +1,11 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top justify-content-between bg-body-tertiary px-5 pt-5" id="navbar">
+<nav class="navbar navbar-expand-lg fixed-top justify-content-between bg-body-tertiary px-5 py-4" id="navbar">
     <!-- Brand & collapse button -->
     <div>
         <a class="navbar-brand text-capitalize text-primary fs-2 fw-bold ms-5" href="/">soft skills games</a>
     </div>
-    {% if user.is_authenticated %}
     <div class="me-5">
+        {% if user.is_authenticated %}
         <!-- language -->
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-outline-light text-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-translate h4"></i></button>
@@ -78,19 +78,20 @@
                     </figure>
                 </a></li>
             </ul>
-        </div>      
+        </div>
+        {% else %}
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active fs-5 fw-light text-capitalize" aria-current="page" href="#hero_section">home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fs-5 fw-light text-capitalize" href="#how_section">how it works</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fs-5 fw-light text-uppercase" href="/account/signin">register</a>
+            </li>
+        </ul>
+        {% endif %}    
     </div>
-    {% else %}
-    <ul class="nav me-5">
-        <li class="nav-item">
-            <a class="nav-link active fs-5 fw-light text-capitalize" aria-current="page" href="#hero_section">home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link fs-5 fw-light text-capitalize" href="#how_section">how it works</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link fs-5 fw-light text-uppercase" href="/account/signin">register</a>
-        </li>
-    </ul>
-    {% endif %}
+    
 </nav>
