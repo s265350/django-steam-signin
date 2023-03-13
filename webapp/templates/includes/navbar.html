@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg fixed-top justify-content-between bg-body-tertiary px-5 py-4" id="navbar">
     <!-- Brand & collapse button -->
     <div>
-        <a class="navbar-brand text-capitalize text-primary fs-2 fw-bold ms-5" href="/">soft skills games</a>
+        <a class="navbar-brand text-primary text-capitalize fs-2 fw-semibold ms-5" href="/">soft skills games</a>
     </div>
     <div class="me-5">
         {% if user.is_authenticated %}
@@ -60,7 +60,7 @@
                 <img src={{ user.avatar }} class="figure-img img-responsive rounded-circle my-0" style="width: 2rem;" alt="avatar">
                 <figcaption class="figure-caption h6 px-3 my-0">
                     {% if user.get_short_name %}{{ user.get_short_name }}{% else %}{{ user.steamid }}{% endif %}<br>
-                    <small class="text-muted fw-lighter my-0">{% if user.role %}{{ user.role }}{% else %}No role set{% endif %}</small>
+                    <small class="text-muted my-0">{% if user.role %}{{ user.role }}{% else %}No role set{% endif %}</small>
                 </figcaption>
             </figure>
             <ul class="dropdown-menu mt-1">
@@ -82,13 +82,13 @@
         {% else %}
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active fs-5 fw-light text-capitalize" aria-current="page" href="#hero_section">home</a>
+                <a class="nav-link active fs-5 text-capitalize" aria-current="page" href="#hero_section">home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fs-5 fw-light text-capitalize" href="#how_section">how it works</a>
+                <a class="nav-link fs-5 text-capitalize" href="#how_section">how it works</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fs-5 fw-light text-uppercase" href="/account/signin">register</a>
+                <a class="nav-link fs-5 text-uppercase" href="/account/signin">register</a>
             </li>
         </ul>
         {% endif %}    

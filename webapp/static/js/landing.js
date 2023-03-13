@@ -49,7 +49,7 @@ testimonials.forEach((testimonial) => {
     blockquote.setAttribute('class', 'blockquote mb-0');
     cardbody.appendChild(blockquote);
     const p = document.createElement('p');
-    p.setAttribute('class', 'text-start text-primary fs-5 fw-normal');
+    p.setAttribute('class', 'text-start text-primary fs-5 fw-light');
     p.innerText = testimonial.text;
     blockquote.appendChild(p);
     const footer = document.createElement('footer');
