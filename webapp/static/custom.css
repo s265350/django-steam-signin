@@ -1,8 +1,0 @@
-/* remove dropdowns arrow */
-.dropdown-toggle::after{
-    content: none; 
-}
-
-.card-shadow {
-    box-shadow: 0px 0px 30px 0px #88C9F1;
-}
